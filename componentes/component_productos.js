@@ -7,21 +7,29 @@ Vue.component('card-productos', {
     `
     <div class="col-6 col-sm-4 col-lg-3 mb-3 pl-2 pr-2" >
 
-    <div class="card btn" @click="addtocard(id,refe,image,gr)">
+    <modal-img v-if="showmodal" @close='showmodal=false' :data="modalData"></modal-img>
 
-    <p class="card-text text-right mb-0 text-black-50">{{ refe }}</p>
+    <div class="card btn" >
 
-    <img v-bind:src='image'  width="100%">
+    <p class="card-text text-right mb-0 text-black-50" @click="addtocard(id,refe,image,gr)">{{ refe }}</p>
 
-    <div class="card-body p-0">
+    <img v-bind:src='image'  width="100%" @click="addtocard(id,refe,image,gr)">
+
+    <div class="card-body p-0 mt-2">
 
         <div class="d-flex justify-content-between ">
 
-            <p class="card-text mb-0 text-black-50">{{ gr }}g aprox</p>
+            <p class="card-text mb-0 text-black-50" @click="addtocard(id,refe,image,gr)">{{ gr }}g aprox</p>
 
-            <img v-if="tipoimg" v-bind:src="imgadd" width="25px" >
+            <div>
 
-            <img v-else="tipoimg" v-bind:src="srcadd" width="25px" >
+            <img v-bind:src="miglupa" width="25px" @click="Openmodal(image)">
+            
+            <img v-if="tipoimg" v-bind:src="imgadd" width="25px" @click="addtocard(id,refe,image,gr)">
+
+            <img v-else="tipoimg" v-bind:src="srcadd" width="25px" @click="addtocard(id,refe,image,gr)">
+
+            </div>
 
         </div>
 
@@ -29,7 +37,8 @@ Vue.component('card-productos', {
 
     </div>
 
-   </div>   
+   </div>  
+    
 
     `,
 
@@ -42,6 +51,12 @@ Vue.component('card-productos', {
           imgadd:'img/love-and-romance.svg',
 
           srcadd:'img/love-and-romance (1).svg',
+
+          miglupa:'img/lupa.svg',
+
+          modalData: null,
+
+          showmodal:false
 
         }
 
@@ -67,10 +82,16 @@ Vue.component('card-productos', {
 
             }
 
+        },
+        Openmodal(data){
+
+            this.modalData=data
+
+            this.showmodal=true
+
         }
 
-  
-
     }
+
 
 })

@@ -5,7 +5,7 @@ Vue.component('card-ver-carrito', {
     template:
 
     `
-	<li class="media border border-light">
+	<li class="media border border-light p-0">
 	  <img v-bind:src='image' width="20%" class="border-right border-light ">
 	  <div class="media-body ml-3 ">
 	    <h5 class="mt-0 mb-1 pt-3">{{refe}}</h5>
