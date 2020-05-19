@@ -29,7 +29,7 @@
 
         <div class="col-md-12 text-right mt-3 fixed-bottom">
 
-         <card-carrito v-if="!show" @click.native="show =!show"></card-carrito>  
+         <card-carrito  @click.native="show =!show"></card-carrito>  
 
         </div>
 
@@ -101,7 +101,7 @@
     <transition name="slide-fade">
  
       <div v-if="show" class="row col-lg-12 position-fixed m-0 p-0" style="background: #98989878;right: 0;overflow-y: scroll;height: 100%;z-index: 1000;">
-        <div class="col-2 col-sm-7 col-lg-8"  @click="show =!show"></div>
+        <div class="col-2 col-sm-7 col-lg-8"   @click="show =!show"></div>
         <div class="col-10 col-sm-5 col-lg-4 bg-white ">
           <div class="row mt-3 p-3">
             <div  @click="show =!show" class="col-md-12 text-right btn p-0">
@@ -129,6 +129,9 @@
 
               ></card-ver-carrito>  
             </ul> 
+
+            <button v-if="micar!=''" class="btn btn-outline-secondary btn-lg btn-block">Enviar Cotización</button>
+
           </div> 
         </div>
       </div>
@@ -182,10 +185,13 @@ const store = new Vuex.Store({
 
       }
 
-
-
     }
 
+  },
+  getters:{
+    idproducto(state){
+      return state.cart.filter(dat => dat.id)
+    }
   }
 
 })
@@ -206,9 +212,7 @@ new Vue({
       NUM_RESULTS: 6,
       pag:1,
       micar:store.state.cart,
-      show:false
-      
-      
+      show:false  
 
     }
 

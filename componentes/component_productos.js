@@ -17,9 +17,9 @@ Vue.component('card-productos', {
 
     <div class="card-body p-0 mt-2">
 
-        <div class="d-flex justify-content-between ">
+        <div class="d-flex justify-content-between align-items-center">
 
-            <p class="card-text mb-0 text-black-50" @click="addtocard(id,refe,image,gr)">{{ gr }}g aprox</p>
+            <p class="card-text mb-0 text-black-50" @click="addtocard(id,refe,image,gr)" style="font-size:12px">{{ gr }}g aprox</p>
 
             <div>
 
@@ -42,6 +42,16 @@ Vue.component('card-productos', {
 
     `,
 
+
+    computed: {
+        ...Vuex.mapState(['cart'])
+
+    },
+    created() {
+
+        console.log(this.cart)
+
+    },
     data () {
 
         return {

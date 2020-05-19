@@ -12,11 +12,11 @@ Vue.component('card-ver-carrito', {
 	    <h5 class="mt-0 mb-1 pt-3">{{refe}}</h5>
 	    <p class="text-black-50"> {{ gramos }}g aprox </p>
 	  </div>
-	  <div class="btn col-lg-3 border-left border-light p-4">
-        <img v-bind:src='imgdelete' width="15px" @click="deletep(0,id)">
+	  <div class="btn col-lg-3 border-left border-light" style="padding: 30px;" @click="deletep(0,id)">
+        <img v-bind:src='imgdelete' width="15px" >
       </div>
 	</li>  
-	<transition>
+	</transition>
 	`,
     data () {
 
@@ -30,7 +30,7 @@ Vue.component('card-ver-carrito', {
 	  
 	methods:{
 		deletep(add,id){
-			store.commit('addcart',{addp:add,idp:id})  
+			store.commit('addcart',{addp:add,idp:id})
 		}
 	}
 

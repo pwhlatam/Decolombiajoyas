@@ -10,7 +10,7 @@ Vue.component('card-carrito', {
 
     <img v-bind:src="imgcart" width="50px" >
     
-    <span class="cart-compra">
+    <span v-if="$store.state.cart.length" class="cart-compra">
      {{ $store.state.cart.length }}
     </span>
 
